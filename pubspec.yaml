@@ -1,8 +1,8 @@
 name: msgpack_dart
 description: Message Pack implementation for dart
 version: 0.0.1
-author: Matej Knopp
-homepage:
+author: Matej Knopp <matej.knopp@gmail.com>
+homepage: https://github.com/knopp/msgpack_dart
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"

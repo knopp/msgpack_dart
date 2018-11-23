@@ -18,14 +18,14 @@ class Float {
 
 class Serializer {
   Serializer({
-    ByteDataBuilder dataBuilder,
+    DataWriter dataBuilder,
     ExtEncoder extEncoder,
-  })  : _dataBuilder = dataBuilder ?? ByteDataBuilder(),
+  })  : _writer = dataBuilder ?? DataWriter(),
         _extEncoder = extEncoder;
 
   void encode(dynamic d) {
-    if (d == null) return _dataBuilder.writeUint8(0xc0);
-    if (d is bool) return _dataBuilder.writeUint8(d == true ? 0xc3 : 0xc2);
+    if (d == null) return _writer.writeUint8(0xc0);
+    if (d is bool) return _writer.writeUint8(d == true ? 0xc3 : 0xc2);
     if (d is int) return d >= 0 ? _writePositiveInt(d) : _writeNegativeInt(d);
     if (d is Float) return _writeFloat(d);
     if (d is double) return _writeDouble(d);
@@ -39,103 +39,103 @@ class Serializer {
   }
 
   List<int> takeBytes() {
-    return _dataBuilder.takeBytes();
+    return _writer.takeBytes();
   }
 
   void _writeNegativeInt(int n) {
     if (n >= -32) {
-      this._dataBuilder.writeInt8(n);
+      this._writer.writeInt8(n);
     } else if (n >= -128) {
-      this._dataBuilder.writeUint8(0xd0);
-      this._dataBuilder.writeInt8(n);
+      this._writer.writeUint8(0xd0);
+      this._writer.writeInt8(n);
     } else if (n >= -32768) {
-      this._dataBuilder.writeUint8(0xd1);
-      this._dataBuilder.writeInt16(n);
+      this._writer.writeUint8(0xd1);
+      this._writer.writeInt16(n);
     } else if (n >= -2147483648) {
-      this._dataBuilder.writeUint8(0xd2);
-      this._dataBuilder.writeInt32(n);
+      this._writer.writeUint8(0xd2);
+      this._writer.writeInt32(n);
     } else {
-      this._dataBuilder.writeUint8(0xd3);
-      this._dataBuilder.writeInt64(n);
+      this._writer.writeUint8(0xd3);
+      this._writer.writeInt64(n);
     }
   }
 
   void _writePositiveInt(int n) {
     if (n <= 127) {
-      this._dataBuilder.writeUint8(n);
+      this._writer.writeUint8(n);
     } else if (n <= 0xFF) {
-      this._dataBuilder.writeUint8(0xcc);
-      this._dataBuilder.writeUint8(n);
+      this._writer.writeUint8(0xcc);
+      this._writer.writeUint8(n);
     } else if (n <= 0xFFFF) {
-      this._dataBuilder.writeUint8(0xcd);
-      this._dataBuilder.writeUint16(n);
+      this._writer.writeUint8(0xcd);
+      this._writer.writeUint16(n);
     } else if (n <= 0xFFFFFFFF) {
-      this._dataBuilder.writeUint8(0xce);
-      this._dataBuilder.writeUint32(n);
+      this._writer.writeUint8(0xce);
+      this._writer.writeUint32(n);
     } else {
-      this._dataBuilder.writeUint8(0xcf);
-      this._dataBuilder.writeUint64(n);
+      this._writer.writeUint8(0xcf);
+      this._writer.writeUint64(n);
     }
   }
 
   void _writeFloat(Float n) {
-    _dataBuilder.writeUint8(0xca);
-    _dataBuilder.writeFloat32(n.value);
+    _writer.writeUint8(0xca);
+    _writer.writeFloat32(n.value);
   }
 
   void _writeDouble(double n) {
-    _dataBuilder.writeUint8(0xcb);
-    _dataBuilder.writeFloat64(n);
+    _writer.writeUint8(0xcb);
+    _writer.writeFloat64(n);
   }
 
   void _writeString(String s) {
     final encoded = _codec.encode(s);
     final length = encoded.length;
     if (length <= 31) {
-      _dataBuilder.writeUint8(0xA0 | length);
+      _writer.writeUint8(0xA0 | length);
     } else if (length <= 0xFF) {
-      _dataBuilder.writeUint8(0xd9);
-      _dataBuilder.writeUint8(length);
+      _writer.writeUint8(0xd9);
+      _writer.writeUint8(length);
     } else if (length <= 0xFFFF) {
-      _dataBuilder.writeUint8(0xda);
-      _dataBuilder.writeUint16(length);
+      _writer.writeUint8(0xda);
+      _writer.writeUint16(length);
     } else if (length <= 0xFFFFFFFF) {
-      _dataBuilder.writeUint8(0xdb);
-      _dataBuilder.writeUint32(length);
+      _writer.writeUint8(0xdb);
+      _writer.writeUint32(length);
     } else {
       throw FormatError("String is too long to be serialized with msgpack.");
     }
-    _dataBuilder.writeBytes(encoded);
+    _writer.writeBytes(encoded);
   }
 
   void _writeBinary(Uint8List buffer) {
     final length = buffer.length;
     if (length <= 0xFF) {
-      _dataBuilder.writeUint8(0xc4);
-      _dataBuilder.writeUint8(length);
+      _writer.writeUint8(0xc4);
+      _writer.writeUint8(length);
     } else if (length <= 0xFFFF) {
-      _dataBuilder.writeUint8(0xc5);
-      _dataBuilder.writeUint16(length);
+      _writer.writeUint8(0xc5);
+      _writer.writeUint16(length);
     } else if (length <= 0xFFFFFFFF) {
-      _dataBuilder.writeUint8(0xc6);
-      _dataBuilder.writeUint32(length);
+      _writer.writeUint8(0xc6);
+      _writer.writeUint32(length);
     } else {
       throw FormatError("Data is too long to be serialized with msgpack.");
     }
-    _dataBuilder.writeBytes(buffer);
+    _writer.writeBytes(buffer);
   }
 
   void _writeArray(List array) {
     final length = array.length;
 
     if (length <= 0xF) {
-      _dataBuilder.writeUint8(0x90 | length);
+      _writer.writeUint8(0x90 | length);
     } else if (length <= 0xFFFF) {
-      _dataBuilder.writeUint8(0xdc);
-      _dataBuilder.writeUint16(length);
+      _writer.writeUint8(0xdc);
+      _writer.writeUint16(length);
     } else if (length <= 0xFFFFFFFF) {
-      _dataBuilder.writeUint8(0xdd);
-      _dataBuilder.writeUint32(length);
+      _writer.writeUint8(0xdd);
+      _writer.writeUint32(length);
     } else {
       throw FormatError("Array is too big to be serialized with msgpack");
     }
@@ -149,13 +149,13 @@ class Serializer {
     final length = map.length;
 
     if (length <= 0xF) {
-      _dataBuilder.writeUint8(0x80 | length);
+      _writer.writeUint8(0x80 | length);
     } else if (length <= 0xFFFF) {
-      _dataBuilder.writeUint8(0xde);
-      _dataBuilder.writeUint16(length);
+      _writer.writeUint8(0xde);
+      _writer.writeUint16(length);
     } else if (length <= 0xFFFFFFFF) {
-      _dataBuilder.writeUint8(0xdf);
-      _dataBuilder.writeUint32(length);
+      _writer.writeUint8(0xdf);
+      _writer.writeUint32(length);
     } else {
       throw FormatError("Map is too big to be serialized with msgpack");
     }
@@ -177,33 +177,33 @@ class Serializer {
 
       final length = encoded.length;
       if (length == 1) {
-        _dataBuilder.writeUint8(0xd4);
+        _writer.writeUint8(0xd4);
       } else if (length == 2) {
-        _dataBuilder.writeUint8(0xd5);
+        _writer.writeUint8(0xd5);
       } else if (length == 4) {
-        _dataBuilder.writeUint8(0xd6);
+        _writer.writeUint8(0xd6);
       } else if (length == 8) {
-        _dataBuilder.writeUint8(0xd7);
+        _writer.writeUint8(0xd7);
       } else if (length == 16) {
-        _dataBuilder.writeUint8(0xd8);
+        _writer.writeUint8(0xd8);
       } else if (length <= 0xFF) {
-        _dataBuilder.writeUint8(0xc7);
-        _dataBuilder.writeUint16(length);
+        _writer.writeUint8(0xc7);
+        _writer.writeUint16(length);
       } else if (length <= 0xFFFF) {
-        _dataBuilder.writeUint8(0xc8);
-        _dataBuilder.writeUint16(length);
+        _writer.writeUint8(0xc8);
+        _writer.writeUint16(length);
       } else if (length <= 0xFFFFFFFF) {
-        _dataBuilder.writeUint8(0xc9);
-        _dataBuilder.writeUint32(length);
+        _writer.writeUint8(0xc9);
+        _writer.writeUint32(length);
       } else {
         throw FormatError("Size must be at most 0xFFFFFFFF");
       }
-      this._dataBuilder.writeUint8(type);
-      this._dataBuilder.writeBytes(encoded);
+      this._writer.writeUint8(type);
+      this._writer.writeBytes(encoded);
     }
   }
 
   final _codec = Utf8Codec();
-  final ByteDataBuilder _dataBuilder;
+  final DataWriter _writer;
   final ExtEncoder _extEncoder;
 }

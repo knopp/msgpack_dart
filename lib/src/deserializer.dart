@@ -14,11 +14,11 @@ class Deserializer {
 
   dynamic decode() {
     final u = _list[_offset++];
-    if ((u & 0xE0) == 0xE0) {
+    if (u <= 127) {
+      return u;
+    } else if ((u & 0xE0) == 0xE0) {
       // negative small integer
       return u - 256;
-    } else if (u <= 127) {
-      return u;
     } else if ((u & 0xE0) == 0xA0) {
       return _readString(u & 0x1F);
     } else if ((u & 0xF0) == 0x90) {

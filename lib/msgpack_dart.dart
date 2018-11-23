@@ -5,7 +5,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 part 'src/common.dart';
-part 'src/data_builder.dart';
+part 'src/data_writer.dart';
 part 'src/serializer.dart';
 part 'src/deserializer.dart';
 

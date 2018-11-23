@@ -1,10 +1,12 @@
 part of msgpack_dart;
 
-final int _kScratchSize = 1024;
+final int _kScratchSizeInitial = 64;
+final int _kScratchSizeRegular = 1024;
 
-class ByteDataBuilder {
-  ByteDataBuilder() {
-    _scratchBuffer = Uint8List(_kScratchSize);
+class DataWriter {
+  DataWriter() {
+    // start with small scratch buffer, expand to regular later if needed
+    _scratchBuffer = Uint8List(_kScratchSizeInitial);
     _scratchData =
         ByteData.view(_scratchBuffer.buffer, _scratchBuffer.offsetInBytes);
   }
@@ -92,11 +94,29 @@ class ByteDataBuilder {
   }
 
   List<int> takeBytes() {
-    _appendScratchBuffer();
-    return _builder.takeBytes();
+    if (_builder.isEmpty) {
+      // Just take scratch data
+      final res = Uint8List.view(
+        _scratchBuffer.buffer,
+        _scratchBuffer.offsetInBytes,
+        _scratchOffset,
+      );
+      _scratchOffset = 0;
+      _scratchBuffer = null;
+      _scratchData = null;
+      return res;
+    } else {
+      _appendScratchBuffer();
+      return _builder.takeBytes();
+    }
   }
 
   void _ensureSize(int size) {
+    if (_scratchBuffer == null) {
+      _scratchBuffer = Uint8List(_kScratchSizeInitial);
+      _scratchData =
+          ByteData.view(_scratchBuffer.buffer, _scratchBuffer.offsetInBytes);
+    }
     final remaining = _scratchBuffer.length - _scratchOffset;
     if (remaining < size) {
       _appendScratchBuffer();
@@ -105,20 +125,34 @@ class ByteDataBuilder {
 
   void _appendScratchBuffer() {
     if (_scratchOffset > 0) {
-      _builder.add(
-        Uint8List.fromList(
-          Uint8List.view(
-            _scratchBuffer.buffer,
-            _scratchBuffer.offsetInBytes,
-            _scratchOffset,
+      if (_builder.isEmpty) {
+        // We're still on small scratch buffer, move it to _builder
+        // and create regular one
+        _builder.add(Uint8List.view(
+          _scratchBuffer.buffer,
+          _scratchBuffer.offsetInBytes,
+          _scratchOffset,
+        ));
+        _scratchBuffer = Uint8List(_kScratchSizeRegular);
+        _scratchData =
+            ByteData.view(_scratchBuffer.buffer, _scratchBuffer.offsetInBytes);
+      } else {
+        _builder.add(
+          Uint8List.fromList(
+            Uint8List.view(
+              _scratchBuffer.buffer,
+              _scratchBuffer.offsetInBytes,
+              _scratchOffset,
+            ),
           ),
-        ),
-      );
+        );
+      }
       _scratchOffset = 0;
     }
   }
 
   final _builder = BytesBuilder(copy: false);
+
   Uint8List _scratchBuffer;
   ByteData _scratchData;
   int _scratchOffset = 0;
