@@ -3,77 +3,77 @@ Serialize
 ===
 One
 ---
-Time | JSON | MsgPack | New MsgPack | msgpack_dart |
------|------|---------|-------------|--------------|
-Total | 257 μs (0.257ms) | 634 μs (0.634ms) | 135 μs (0.135ms)
-Average | 0.0257 μs (0.0000257ms) | 0.0634 μs (0.0000634ms) | 0.0135 μs (0.0000135ms)
-Longest | 111 μs (0.111ms) | 161 μs (0.161ms) | 47 μs (0.047ms)
+Time | JSON | MsgPack | msgpack_dart |
+-----|------|---------|--------------|
+Total | 225 μs (0.225ms) | 664 μs (0.664ms) | 106 μs (0.106ms)
+Average | 0.0225 μs (0.000022499999999999998ms) | 0.0664 μs (0.0000664ms) | 0.0106 μs (0.0000106ms)
+Longest | 53 μs (0.053ms) | 232 μs (0.232ms) | 57 μs (0.057ms)
 Shortest | 0 μs (0.0ms) | 0 μs (0.0ms) | 0 μs (0.0ms)
 Size | 1 bytes | 1 bytes | 1 bytes
 Fastest | msgpack_dart
 
 Five Hundred Thousand
 ---
-Time | JSON | MsgPack | New MsgPack | msgpack_dart |
------|------|---------|-------------|--------------|
-Total | 855 μs (0.855ms) | 12086 μs (12.086ms) | 204 μs (0.204ms)
-Average | 0.0855 μs (0.0000855ms) | 1.2086 μs (0.0012086ms) | 0.0204 μs (0.0000204ms)
-Longest | 644 μs (0.644ms) | 1222 μs (1.222ms) | 20 μs (0.02ms)
+Time | JSON | MsgPack | msgpack_dart |
+-----|------|---------|--------------|
+Total | 278 μs (0.278ms) | 3702 μs (3.702ms) | 912 μs (0.912ms)
+Average | 0.0278 μs (0.000027799999999999998ms) | 0.3702 μs (0.0003702ms) | 0.0912 μs (0.00009120000000000001ms)
+Longest | 278 μs (0.278ms) | 470 μs (0.47ms) | 849 μs (0.849ms)
 Shortest | 0 μs (0.0ms) | 0 μs (0.0ms) | 0 μs (0.0ms)
 Size | 6 bytes | 5 bytes | 5 bytes
-Fastest | msgpack_dart
+Fastest | JSON
 
 List of Small Integers
 ---
-Time | JSON | MsgPack | New MsgPack | msgpack_dart |
------|------|---------|-------------|--------------|
-Total | 264 μs (0.264ms) | 561 μs (0.561ms) | 234 μs (0.234ms)
-Average | 0.0264 μs (0.0000264ms) | 0.0561 μs (0.000056099999999999995ms) | 0.0234 μs (0.0000234ms)
-Longest | 69 μs (0.069ms) | 145 μs (0.145ms) | 31 μs (0.031ms)
+Time | JSON | MsgPack | msgpack_dart |
+-----|------|---------|--------------|
+Total | 277 μs (0.277ms) | 720 μs (0.72ms) | 549 μs (0.549ms)
+Average | 0.0277 μs (0.0000277ms) | 0.072 μs (0.00007199999999999999ms) | 0.0549 μs (0.0000549ms)
+Longest | 146 μs (0.146ms) | 240 μs (0.24ms) | 336 μs (0.336ms)
 Shortest | 0 μs (0.0ms) | 0 μs (0.0ms) | 0 μs (0.0ms)
 Size | 7 bytes | 4 bytes | 4 bytes
-Fastest | msgpack_dart
+Fastest | JSON
 
 Simple Map
 ---
-Time | JSON | MsgPack | New MsgPack | msgpack_dart |
------|------|---------|-------------|--------------|
-Total | 195 μs (0.195ms) | 1012 μs (1.012ms) | 101 μs (0.101ms)
-Average | 0.0195 μs (0.0000195ms) | 0.1012 μs (0.0001012ms) | 0.0101 μs (0.0000101ms)
-Longest | 73 μs (0.073ms) | 480 μs (0.48ms) | 43 μs (0.043ms)
+Time | JSON | MsgPack | msgpack_dart |
+-----|------|---------|--------------|
+Total | 514 μs (0.514ms) | 642 μs (0.642ms) | 271 μs (0.271ms)
+Average | 0.0514 μs (0.0000514ms) | 0.0642 μs (0.00006419999999999999ms) | 0.0271 μs (0.000027099999999999998ms)
+Longest | 135 μs (0.135ms) | 130 μs (0.13ms) | 82 μs (0.082ms)
 Shortest | 0 μs (0.0ms) | 0 μs (0.0ms) | 0 μs (0.0ms)
 Size | 17 bytes | 13 bytes | 13 bytes
 Fastest | msgpack_dart
 
 5.02817472928
 ---
-Time | JSON | MsgPack | New MsgPack | msgpack_dart |
------|------|---------|-------------|--------------|
-Total | 0 μs (0.0ms) | 427 μs (0.427ms) | 0 μs (0.0ms)
-Average | 0.0 μs (0.0ms) | 0.0427 μs (0.0000427ms) | 0.0 μs (0.0ms)
-Longest | 0 μs (0.0ms) | 203 μs (0.203ms) | 0 μs (0.0ms)
+Time | JSON | MsgPack | msgpack_dart |
+-----|------|---------|--------------|
+Total | 328 μs (0.328ms) | 677 μs (0.677ms) | 426 μs (0.426ms)
+Average | 0.0328 μs (0.000032800000000000004ms) | 0.0677 μs (0.00006769999999999999ms) | 0.0426 μs (0.0000426ms)
+Longest | 273 μs (0.273ms) | 162 μs (0.162ms) | 45 μs (0.045ms)
 Shortest | 0 μs (0.0ms) | 0 μs (0.0ms) | 0 μs (0.0ms)
 Size | 13 bytes | 9 bytes | 9 bytes
-Fastest | msgpack_dart
+Fastest | JSON
 
 Multiple Type Map
 ---
-Time | JSON | MsgPack | New MsgPack | msgpack_dart |
------|------|---------|-------------|--------------|
-Total | 11567 μs (11.567ms) | 10959 μs (10.959ms) | 10804 μs (10.804ms)
-Average | 1.1567 μs (0.0011567ms) | 1.0959 μs (0.0010959000000000001ms) | 1.0804 μs (0.0010804ms)
-Longest | 423 μs (0.423ms) | 448 μs (0.448ms) | 52 μs (0.052ms)
+Time | JSON | MsgPack | msgpack_dart |
+-----|------|---------|--------------|
+Total | 11884 μs (11.884ms) | 11063 μs (11.063ms) | 10875 μs (10.875ms)
+Average | 1.1884 μs (0.0011883999999999998ms) | 1.1063 μs (0.0011063000000000002ms) | 1.0875 μs (0.0010875ms)
+Longest | 150 μs (0.15ms) | 223 μs (0.223ms) | 430 μs (0.43ms)
 Shortest | 1 μs (0.001ms) | 1 μs (0.001ms) | 1 μs (0.001ms)
 Size | 76 bytes | 61 bytes | 61 bytes
 Fastest | msgpack_dart
 
 Medium Data
 ---
-Time | JSON | MsgPack | New MsgPack | msgpack_dart |
------|------|---------|-------------|--------------|
-Total | 122652 μs (122.652ms) | 41877 μs (41.877ms) | 46685 μs (46.685ms)
-Average | 12.2652 μs (0.0122652ms) | 4.1877 μs (0.004187700000000001ms) | 4.6685 μs (0.0046685ms)
-Longest | 212 μs (0.212ms) | 104 μs (0.104ms) | 167 μs (0.167ms)
+Time | JSON | MsgPack | msgpack_dart |
+-----|------|---------|--------------|
+Total | 119371 μs (119.371ms) | 42721 μs (42.721ms) | 45695 μs (45.695ms)
+Average | 11.9371 μs (0.011937099999999999ms) | 4.2721 μs (0.0042721ms) | 4.5695 μs (0.0045695ms)
+Longest | 185 μs (0.185ms) | 137 μs (0.137ms) | 527 μs (0.527ms)
 Shortest | 11 μs (0.011ms) | 4 μs (0.004ms) | 4 μs (0.004ms)
 Size | 902 bytes | 587 bytes | 587 bytes
 Fastest | MsgPack2
@@ -84,29 +84,29 @@ One
 ---
 Time | JSON | MsgPack2 | msgpack_dart |
 -----|------|----------|--------------|
-Total | 5218 μs (5.218ms) | 39 μs (0.039ms) |229 μs (0.229ms)
-Average | 0.5218 μs (0.0005218ms) | 0.0039 μs (0.0000039ms) |0.0229 μs (0.0000229ms)
-Longest | 1510 μs (1.51ms) | 19 μs (0.019ms) |111 μs (0.111ms)
+Total | 77 μs (0.077ms) | 37 μs (0.037ms) |0 μs (0.0ms)
+Average | 0.0077 μs (0.0000077ms) | 0.0037 μs (0.0000037ms) |0.0 μs (0.0ms)
+Longest | 39 μs (0.039ms) | 36 μs (0.036ms) |0 μs (0.0ms)
 Shortest | 0 μs (0.0ms) | 0 μs (0.0ms) |0 μs (0.0ms)
-Fastest | MsgPack2
+Fastest | msgpack_dart
 
 Five Hundred Thousand
 ---
 Time | JSON | MsgPack2 | msgpack_dart |
 -----|------|----------|--------------|
-Total | 485 μs (0.485ms) | 2044 μs (2.044ms) |827 μs (0.827ms)
-Average | 0.0485 μs (0.0000485ms) | 0.2044 μs (0.0002044ms) |0.0827 μs (0.00008269999999999999ms)
-Longest | 319 μs (0.319ms) | 856 μs (0.856ms) |270 μs (0.27ms)
+Total | 173 μs (0.173ms) | 113 μs (0.113ms) |84 μs (0.084ms)
+Average | 0.0173 μs (0.0000173ms) | 0.0113 μs (0.000011299999999999999ms) |0.0084 μs (0.0000084ms)
+Longest | 58 μs (0.058ms) | 19 μs (0.019ms) |26 μs (0.026ms)
 Shortest | 0 μs (0.0ms) | 0 μs (0.0ms) |0 μs (0.0ms)
-Fastest | JSON
+Fastest | msgpack_dart
 
 List of Small Integers
 ---
 Time | JSON | MsgPack2 | msgpack_dart |
 -----|------|----------|--------------|
-Total | 7013 μs (7.013ms) | 1309 μs (1.309ms) |603 μs (0.603ms)
-Average | 0.7013 μs (0.0007013000000000001ms) | 0.1309 μs (0.00013089999999999998ms) |0.0603 μs (0.0000603ms)
-Longest | 323 μs (0.323ms) | 516 μs (0.516ms) |170 μs (0.17ms)
+Total | 403 μs (0.403ms) | 149 μs (0.149ms) |149 μs (0.149ms)
+Average | 0.0403 μs (0.000040300000000000004ms) | 0.0149 μs (0.0000149ms) |0.0149 μs (0.0000149ms)
+Longest | 223 μs (0.223ms) | 32 μs (0.032ms) |47 μs (0.047ms)
 Shortest | 0 μs (0.0ms) | 0 μs (0.0ms) |0 μs (0.0ms)
 Fastest | msgpack_dart
 
@@ -114,9 +114,9 @@ Simple Map
 ---
 Time | JSON | MsgPack2 | msgpack_dart |
 -----|------|----------|--------------|
-Total | 775 μs (0.775ms) | 887 μs (0.887ms) |828 μs (0.828ms)
-Average | 0.0775 μs (0.0000775ms) | 0.0887 μs (0.0000887ms) |0.0828 μs (0.0000828ms)
-Longest | 37 μs (0.037ms) | 94 μs (0.094ms) |66 μs (0.066ms)
+Total | 154 μs (0.154ms) | 475 μs (0.475ms) |802 μs (0.802ms)
+Average | 0.0154 μs (0.0000154ms) | 0.0475 μs (0.0000475ms) |0.0802 μs (0.0000802ms)
+Longest | 58 μs (0.058ms) | 207 μs (0.207ms) |569 μs (0.569ms)
 Shortest | 0 μs (0.0ms) | 0 μs (0.0ms) |0 μs (0.0ms)
 Fastest | JSON
 
@@ -124,9 +124,9 @@ Fastest | JSON
 ---
 Time | JSON | MsgPack2 | msgpack_dart |
 -----|------|----------|--------------|
-Total | 6816 μs (6.816ms) | 1737 μs (1.737ms) |393 μs (0.393ms)
-Average | 0.6816 μs (0.0006816ms) | 0.1737 μs (0.0001737ms) |0.0393 μs (0.0000393ms)
-Longest | 1943 μs (1.943ms) | 460 μs (0.46ms) |125 μs (0.125ms)
+Total | 282 μs (0.282ms) | 47 μs (0.047ms) |39 μs (0.039ms)
+Average | 0.0282 μs (0.0000282ms) | 0.0047 μs (0.0000047ms) |0.0039 μs (0.0000039ms)
+Longest | 129 μs (0.129ms) | 25 μs (0.025ms) |39 μs (0.039ms)
 Shortest | 0 μs (0.0ms) | 0 μs (0.0ms) |0 μs (0.0ms)
 Fastest | msgpack_dart
 
@@ -134,19 +134,19 @@ Multiple Type Map
 ---
 Time | JSON | MsgPack2 | msgpack_dart |
 -----|------|----------|--------------|
-Total | 6728 μs (6.728ms) | 8954 μs (8.954ms) |1721 μs (1.721ms)
-Average | 0.6728 μs (0.0006728ms) | 0.8954 μs (0.0008954ms) |0.1721 μs (0.0001721ms)
-Longest | 318 μs (0.318ms) | 67 μs (0.067ms) |63 μs (0.063ms)
-Shortest | 0 μs (0.0ms) | 0 μs (0.0ms) |0 μs (0.0ms)
+Total | 873 μs (0.873ms) | 10845 μs (10.845ms) |664 μs (0.664ms)
+Average | 0.0873 μs (0.00008730000000000001ms) | 1.0845 μs (0.0010845ms) |0.0664 μs (0.0000664ms)
+Longest | 242 μs (0.242ms) | 129 μs (0.129ms) |81 μs (0.081ms)
+Shortest | 0 μs (0.0ms) | 1 μs (0.001ms) |0 μs (0.0ms)
 Fastest | msgpack_dart
 
 Medium Data
 ---
 Time | JSON | MsgPack2 | msgpack_dart |
 -----|------|----------|--------------|
-Total | 56457 μs (56.457ms) | 34942 μs (34.942ms) |25224 μs (25.224ms)
-Average | 5.6457 μs (0.0056457ms) | 3.4942 μs (0.0034942000000000003ms) |2.5224 μs (0.0025224ms)
-Longest | 196 μs (0.196ms) | 179 μs (0.179ms) |815 μs (0.815ms)
+Total | 44220 μs (44.22ms) | 31762 μs (31.762ms) |12274 μs (12.274ms)
+Average | 4.422 μs (0.004422ms) | 3.1762 μs (0.0031762ms) |1.2274 μs (0.0012274ms)
+Longest | 147 μs (0.147ms) | 167 μs (0.167ms) |128 μs (0.128ms)
 Shortest | 4 μs (0.004ms) | 3 μs (0.003ms) |1 μs (0.001ms)
 Fastest | msgpack_dart
 
