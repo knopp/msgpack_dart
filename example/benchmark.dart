@@ -377,16 +377,16 @@ testObjectEncode(String desc, input, bool markdown) {
     print("Time | JSON | MsgPack | New MsgPack | msgpack_dart |");
     print("-----|------|---------|-------------|--------------|");
     print("Total | $jTotal μs (${jTotal / 1000}ms) | " +
-        "$nTotal μs (${nTotal / 1000}ms) |" +
+        "$nTotal μs (${nTotal / 1000}ms) | " +
         "$n2Total μs (${n2Total / 1000}ms)");
     print("Average | $jAvg μs (${jAvg / 1000}ms) | " +
-        "$nAvg μs (${nAvg / 1000}ms) |" +
+        "$nAvg μs (${nAvg / 1000}ms) | " +
         "$n2Avg μs (${n2Avg / 1000}ms)");
     print("Longest | $jLong μs (${jLong / 1000}ms) | " +
-        "$nLong μs (${nLong / 1000}ms) |" +
+        "$nLong μs (${nLong / 1000}ms) | " +
         "$n2Long μs (${n2Long / 1000}ms)");
     print("Shortest | $jShort μs (${jShort / 1000}ms) | " +
-        "$nShort μs (${nShort / 1000}ms) |" +
+        "$nShort μs (${nShort / 1000}ms) | " +
         "$n2Short μs (${n2Short / 1000}ms)");
     print("Size | $jSize bytes | $nSize bytes | $n2Size bytes");
   }
