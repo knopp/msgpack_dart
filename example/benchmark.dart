@@ -163,7 +163,9 @@ testObjectDecode(String desc, input, bool markdown) {
   var newPacked = serialize(input);
 
   var watch = new Stopwatch();
+  var watchTotal = new Stopwatch();
   var times = [];
+  watchTotal.start();
   for (var i = 1; i <= TIMES; i++) {
     watch.reset();
     watch.start();
@@ -171,9 +173,10 @@ testObjectDecode(String desc, input, bool markdown) {
     watch.stop();
     times.add(watch.elapsedMicroseconds);
   }
-  var totalTime = times.reduce((a, b) => a + b);
+  var totalTime = watchTotal.elapsedMicroseconds;
   var avgTime = totalTime / TIMES;
   times.sort((a, b) => a.compareTo(b));
+
   if (!markdown) {
     print("  JSON:");
     print("    Total Time: $totalTime microseconds (${totalTime / 1000}ms)");
@@ -190,6 +193,7 @@ testObjectDecode(String desc, input, bool markdown) {
 
   watch.reset();
   times.clear();
+  watchTotal.reset();
   for (var i = 1; i <= TIMES; i++) {
     watch.reset();
     watch.start();
@@ -198,7 +202,7 @@ testObjectDecode(String desc, input, bool markdown) {
     times.add(watch.elapsedMicroseconds);
   }
   watch.stop();
-  totalTime = times.reduce((a, b) => a + b);
+  totalTime = watchTotal.elapsedMicroseconds;
   avgTime = totalTime / TIMES;
   times.sort((a, b) => a.compareTo(b));
   if (!markdown) {
@@ -217,6 +221,7 @@ testObjectDecode(String desc, input, bool markdown) {
 
   watch.reset();
   times.clear();
+  watchTotal.reset();
   for (var i = 1; i <= TIMES; i++) {
     watch.reset();
     watch.start();
@@ -225,7 +230,7 @@ testObjectDecode(String desc, input, bool markdown) {
     times.add(watch.elapsedMicroseconds);
   }
   watch.stop();
-  totalTime = times.reduce((a, b) => a + b);
+  totalTime = watchTotal.elapsedMicroseconds;
   avgTime = totalTime / TIMES;
   times.sort((a, b) => a.compareTo(b));
   if (!markdown) {
@@ -284,8 +289,10 @@ testObjectEncode(String desc, input, bool markdown) {
     print("${desc}:");
   }
   var watch = new Stopwatch();
+  var watchTotal = new Stopwatch();
   var times = [];
 
+  watchTotal.start();
   int size = utf8.encode(json.encode(input)).length;
   for (var i = 1; i <= TIMES; i++) {
     watch.reset();
@@ -294,7 +301,8 @@ testObjectEncode(String desc, input, bool markdown) {
     watch.stop();
     times.add(watch.elapsedMicroseconds);
   }
-  var totalTime = times.reduce((a, b) => a + b);
+  var totalTime = watchTotal.elapsedMicroseconds;
+  ;
   var avgTime = totalTime / TIMES;
   times.sort((a, b) => a.compareTo(b));
   if (!markdown) {
@@ -316,6 +324,7 @@ testObjectEncode(String desc, input, bool markdown) {
   watch.reset();
   size = serialize(input).length;
   times.clear();
+  watchTotal.reset();
   for (var i = 1; i <= TIMES; i++) {
     watch.reset();
     watch.start();
@@ -324,7 +333,7 @@ testObjectEncode(String desc, input, bool markdown) {
     times.add(watch.elapsedMicroseconds);
   }
   watch.stop();
-  totalTime = times.reduce((a, b) => a + b);
+  totalTime = watchTotal.elapsedMicroseconds;
   avgTime = totalTime / TIMES;
   times.sort((a, b) => a.compareTo(b));
   if (!markdown) {
@@ -346,6 +355,7 @@ testObjectEncode(String desc, input, bool markdown) {
   watch.reset();
   size = m2.serialize(input).length;
   times.clear();
+  watchTotal.reset();
   for (var i = 1; i <= TIMES; i++) {
     watch.reset();
     watch.start();
@@ -354,7 +364,7 @@ testObjectEncode(String desc, input, bool markdown) {
     times.add(watch.elapsedMicroseconds);
   }
   watch.stop();
-  totalTime = times.reduce((a, b) => a + b);
+  totalTime = watchTotal.elapsedMicroseconds;
   avgTime = totalTime / TIMES;
   times.sort((a, b) => a.compareTo(b));
   if (!markdown) {
