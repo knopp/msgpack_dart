@@ -18,9 +18,9 @@ class Float {
 
 class Serializer {
   Serializer({
-    DataWriter dataBuilder,
+    DataWriter dataWriter,
     ExtEncoder extEncoder,
-  })  : _writer = dataBuilder ?? DataWriter(),
+  })  : _writer = dataWriter ?? DataWriter(),
         _extEncoder = extEncoder;
 
   void encode(dynamic d) {
