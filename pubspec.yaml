@@ -9,3 +9,4 @@ environment:
 
 dev_dependencies:
   test: ^1.3.0
+  msgpack2: ^2.0.0+1
