@@ -1,4 +1,6 @@
 # msgpack_dart
 
-MessagePack imnplementation for dart
+MessagePack implementation for dart.
+
+Clean, simple, fast and with sane API and implementation.
 
