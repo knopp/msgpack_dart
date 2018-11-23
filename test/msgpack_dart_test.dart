@@ -2,6 +2,10 @@ import 'dart:typed_data';
 import 'package:test/test.dart';
 import "package:msgpack_dart/msgpack_dart.dart";
 
+//
+// Tests taken from msgpack2 (https://github.com/butlermatt/msgpack2)
+//
+
 var isString = predicate((e) => e is String, 'is a String');
 var isInt = predicate((e) => e is int, 'is an int');
 var isMap = predicate((e) => e is Map, 'is a Map');
