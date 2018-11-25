@@ -3,7 +3,7 @@ Serialize
 ===
 One
 ---
-Time | JSON | MsgPack | msgpack_dart |
+Time | JSON | MsgPack2 | msgpack_dart |
 -----|------|---------|--------------|
 Total | 18047 μs (18.047ms) | 3825 μs (3.825ms) | 3306 μs (3.306ms)
 Average | 1.8047 μs (0.0018047ms) | 0.3825 μs (0.00038250000000000003ms) | 0.3306 μs (0.0003306ms)
@@ -14,7 +14,7 @@ Fastest | msgpack_dart
 
 Five Hundred Thousand
 ---
-Time | JSON | MsgPack | msgpack_dart |
+Time | JSON | MsgPack2 | msgpack_dart |
 -----|------|---------|--------------|
 Total | 3554 μs (3.554ms) | 8758 μs (8.758ms) | 5710 μs (5.71ms)
 Average | 0.3554 μs (0.0003554ms) | 0.8758 μs (0.0008758ms) | 0.571 μs (0.000571ms)
@@ -25,7 +25,7 @@ Fastest | JSON
 
 List of Small Integers
 ---
-Time | JSON | MsgPack | msgpack_dart |
+Time | JSON | MsgPack2 | msgpack_dart |
 -----|------|---------|--------------|
 Total | 20335 μs (20.335ms) | 4704 μs (4.704ms) | 3072 μs (3.072ms)
 Average | 2.0335 μs (0.0020335ms) | 0.4704 μs (0.0004704ms) | 0.3072 μs (0.0003072ms)
@@ -36,7 +36,7 @@ Fastest | msgpack_dart
 
 Simple Map
 ---
-Time | JSON | MsgPack | msgpack_dart |
+Time | JSON | MsgPack2 | msgpack_dart |
 -----|------|---------|--------------|
 Total | 7402 μs (7.402ms) | 8195 μs (8.195ms) | 5981 μs (5.981ms)
 Average | 0.7402 μs (0.0007402ms) | 0.8195 μs (0.0008195ms) | 0.5981 μs (0.0005981ms)
@@ -47,7 +47,7 @@ Fastest | msgpack_dart
 
 5.02817472928
 ---
-Time | JSON | MsgPack | msgpack_dart |
+Time | JSON | MsgPack2 | msgpack_dart |
 -----|------|---------|--------------|
 Total | 2238 μs (2.238ms) | 4321 μs (4.321ms) | 2861 μs (2.861ms)
 Average | 0.2238 μs (0.0002238ms) | 0.4321 μs (0.0004321ms) | 0.2861 μs (0.0002861ms)
@@ -58,7 +58,7 @@ Fastest | JSON
 
 Multiple Type Map
 ---
-Time | JSON | MsgPack | msgpack_dart |
+Time | JSON | MsgPack2 | msgpack_dart |
 -----|------|---------|--------------|
 Total | 13455 μs (13.455ms) | 15366 μs (15.366ms) | 15436 μs (15.436ms)
 Average | 1.3455 μs (0.0013455ms) | 1.5366 μs (0.0015366ms) | 1.5436 μs (0.0015436ms)
@@ -69,7 +69,7 @@ Fastest | JSON
 
 Medium Data
 ---
-Time | JSON | MsgPack | msgpack_dart |
+Time | JSON | MsgPack2 | msgpack_dart |
 -----|------|---------|--------------|
 Total | 120183 μs (120.183ms) | 52318 μs (52.318ms) | 49790 μs (49.79ms)
 Average | 12.0183 μs (0.012018299999999999ms) | 5.2318 μs (0.0052318ms) | 4.979 μs (0.004979ms)

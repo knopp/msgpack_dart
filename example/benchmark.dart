@@ -384,7 +384,7 @@ testObjectEncode(String desc, input, bool markdown) {
   var n2Size = size;
 
   if (markdown) {
-    print("Time | JSON | MsgPack | msgpack_dart |");
+    print("Time | JSON | MsgPack2 | msgpack_dart |");
     print("-----|------|---------|--------------|");
     print("Total | $jTotal μs (${jTotal / 1000}ms) | " +
         "$nTotal μs (${nTotal / 1000}ms) | " +
