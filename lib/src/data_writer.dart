@@ -4,13 +4,6 @@ final int _kScratchSizeInitial = 64;
 final int _kScratchSizeRegular = 1024;
 
 class DataWriter {
-  DataWriter() {
-    // start with small scratch buffer, expand to regular later if needed
-    _scratchBuffer = Uint8List(_kScratchSizeInitial);
-    _scratchData =
-        ByteData.view(_scratchBuffer.buffer, _scratchBuffer.offsetInBytes);
-  }
-
   void writeUint8(int i) {
     _ensureSize(1);
     _scratchData.setUint8(_scratchOffset, i);
@@ -82,7 +75,7 @@ class DataWriter {
       // we can add it directly
       _builder.add(bytes);
     } else {
-      // there is enough room ins _scratchBuffer, otherwise _ensureSize
+      // there is enough room in _scratchBuffer, otherwise _ensureSize
       // would have added _scratchBuffer to _builder and _scratchOffset would
       // be 0
       if (bytes is Uint8List) {
@@ -116,6 +109,7 @@ class DataWriter {
 
   void _ensureSize(int size) {
     if (_scratchBuffer == null) {
+      // start with small scratch buffer, expand to regular later if needed
       _scratchBuffer = Uint8List(_kScratchSizeInitial);
       _scratchData =
           ByteData.view(_scratchBuffer.buffer, _scratchBuffer.offsetInBytes);
