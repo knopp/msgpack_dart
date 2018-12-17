@@ -8,9 +8,17 @@ class Deserializer {
   Deserializer(
     Uint8List list, {
     ExtDecoder extDecoder,
+    this.copyBinaryData = false,
   })  : _list = list,
         _data = ByteData.view(list.buffer, list.offsetInBytes),
         _extDecoder = extDecoder;
+
+  /// If false, decoded binary data buffers will reference underlying input
+  /// buffer and thus may change when the content of input buffer changes.
+  ///
+  /// If true, decoded buffers are copies and the underlying input buffer is
+  /// free to change after decoding.
+  final bool copyBinaryData;
 
   dynamic decode() {
     final u = _list[_offset++];
@@ -154,7 +162,7 @@ class Deserializer {
     final res =
         Uint8List.view(_list.buffer, _list.offsetInBytes + _offset, length);
     _offset += length;
-    return res;
+    return copyBinaryData ? Uint8List.fromList(res) : res;
   }
 
   String _readString(int length) {

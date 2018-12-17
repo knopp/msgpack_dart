@@ -9,13 +9,18 @@ part 'src/data_writer.dart';
 part 'src/serializer.dart';
 part 'src/deserializer.dart';
 
-List<int> serialize(dynamic value, {ExtEncoder extEncoder}) {
+List<int> serialize(
+  dynamic value, {
+  ExtEncoder extEncoder,
+}) {
   final s = Serializer(extEncoder: extEncoder);
   s.encode(value);
   return s.takeBytes();
 }
 
-dynamic deserialize(Uint8List list, {ExtDecoder extDecoder}) {
-  final d = Deserializer(list, extDecoder: extDecoder);
+dynamic deserialize(Uint8List list,
+    {ExtDecoder extDecoder, bool copyBinaryData = false}) {
+  final d = Deserializer(list,
+      extDecoder: extDecoder, copyBinaryData: copyBinaryData);
   return d.decode();
 }
