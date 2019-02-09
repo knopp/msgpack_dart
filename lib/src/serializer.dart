@@ -33,9 +33,10 @@ class Serializer {
     if (d is Uint8List) return _writeBinary(d);
     if (d is List) return _writeArray(d);
     if (d is Map) return _writeMap(d);
-    if (_extEncoder != null) {
-      return _writeExt(d);
+    if (_extEncoder != null && _writeExt(d)) {
+      return;
     }
+    throw FormatError("Don't know how to serialize $d");
   }
 
   List<int> takeBytes() {
@@ -166,7 +167,7 @@ class Serializer {
     }
   }
 
-  void _writeExt(dynamic object) {
+  bool _writeExt(dynamic object) {
     int type = _extEncoder.extTypeForObject(object);
     if (type != null) {
       if (type < 0) {
@@ -200,7 +201,9 @@ class Serializer {
       }
       this._writer.writeUint8(type);
       this._writer.writeBytes(encoded);
+      return true;
     }
+    return false;
   }
 
   final _codec = Utf8Codec();
