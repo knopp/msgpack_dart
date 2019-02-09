@@ -68,11 +68,11 @@ class Deserializer {
       case 0xdb:
         return _readString(_readUInt32());
       case 0xc4:
-        return readBuffer(_readUInt8());
+        return _readBuffer(_readUInt8());
       case 0xc5:
-        return readBuffer(_readUInt16());
+        return _readBuffer(_readUInt16());
       case 0xc6:
-        return readBuffer(_readUInt32());
+        return _readBuffer(_readUInt32());
       case 0xdc:
         return _readArray(_readUInt16());
       case 0xdd:
@@ -158,7 +158,7 @@ class Deserializer {
     return res;
   }
 
-  Uint8List readBuffer(int length) {
+  Uint8List _readBuffer(int length) {
     final res =
         Uint8List.view(_list.buffer, _list.offsetInBytes + _offset, length);
     _offset += length;
@@ -166,7 +166,7 @@ class Deserializer {
   }
 
   String _readString(int length) {
-    final list = readBuffer(length);
+    final list = _readBuffer(length);
     final len = list.length;
     for (int i = 0; i < len; ++i) {
       if (list[i] > 127) {
@@ -195,7 +195,7 @@ class Deserializer {
 
   dynamic _readExt(int length) {
     final extType = _readUInt8();
-    final data = readBuffer(length);
+    final data = _readBuffer(length);
     return _extDecoder?.decodeObject(extType, data);
   }
 
