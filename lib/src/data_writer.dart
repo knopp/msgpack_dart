@@ -89,7 +89,7 @@ class DataWriter {
     }
   }
 
-  List<int> takeBytes() {
+  Uint8List takeBytes() {
     if (_builder.isEmpty) {
       // Just take scratch data
       final res = Uint8List.view(

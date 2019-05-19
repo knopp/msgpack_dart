@@ -39,7 +39,7 @@ class Serializer {
     throw FormatError("Don't know how to serialize $d");
   }
 
-  List<int> takeBytes() {
+  Uint8List takeBytes() {
     return _writer.takeBytes();
   }
 

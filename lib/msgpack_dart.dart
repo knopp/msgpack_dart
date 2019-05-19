@@ -9,7 +9,7 @@ part 'src/data_writer.dart';
 part 'src/serializer.dart';
 part 'src/deserializer.dart';
 
-List<int> serialize(
+Uint8List serialize(
   dynamic value, {
   ExtEncoder extEncoder,
 }) {
