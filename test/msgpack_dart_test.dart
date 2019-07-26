@@ -47,6 +47,7 @@ void main() {
     test("Pack Bin8", packBin8);
     test("Pack Bin16", packBin16);
     test("Pack Bin32", packBin32);
+    test("Pack ByteData", packByteData);
   });
 
   test("Test Unpack Null", unpackNull);
@@ -272,6 +273,15 @@ void packBin32() {
   expect(encoded.length, equals(65536 + 5));
   expect(encoded.getRange(0, 5), orderedEquals([0xc6, 0, 1, 0, 0]));
   expect(encoded.getRange(5, encoded.length), orderedEquals(data));
+}
+
+void packByteData() {
+  var data = ByteData.view(Uint8List.fromList(List.filled(32, 65)).buffer);
+  List<int> encoded = serialize(data);
+  expect(encoded.length, equals(34));
+  expect(encoded.getRange(0, 2), orderedEquals([0xc4, 32]));
+  expect(encoded.getRange(2, encoded.length),
+      orderedEquals(data.buffer.asUint8List()));
 }
 
 void packStringArray() {
