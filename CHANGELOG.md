@@ -5,3 +5,4 @@
 ## [0.0.6] - 2019-09-20
 
 * Accept any iterable when serializing, not just List
+* Accept ByteData when serializing (will be deserialized as Uint8List)
