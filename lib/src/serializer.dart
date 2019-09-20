@@ -31,7 +31,7 @@ class Serializer {
     if (d is double) return _writeDouble(d);
     if (d is String) return _writeString(d);
     if (d is Uint8List) return _writeBinary(d);
-    if (d is List) return _writeArray(d);
+    if (d is Iterable) return _writeIterable(d);
     if (d is Map) return _writeMap(d);
     if (_extEncoder != null && _writeExt(d)) {
       return;
@@ -126,8 +126,8 @@ class Serializer {
     _writer.writeBytes(buffer);
   }
 
-  void _writeArray(List array) {
-    final length = array.length;
+  void _writeIterable(Iterable iterable) {
+    final length = iterable.length;
 
     if (length <= 0xF) {
       _writer.writeUint8(0x90 | length);
@@ -141,7 +141,7 @@ class Serializer {
       throw FormatError("Array is too big to be serialized with msgpack");
     }
 
-    for (final item in array) {
+    for (final item in iterable) {
       encode(item);
     }
   }

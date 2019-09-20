@@ -1,3 +1,7 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.5] - 2019-05-19
 
-* TODO: Describe initial release.
+* Changed return value from `List<int>` to `Uint8List`.
+
+## [0.0.6] - 2019-09-20
+
+* Accept any iterable when serializing, not just List
