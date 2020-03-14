@@ -1,8 +1,12 @@
-## [0.0.5] - 2019-05-19
+## [0.0.7] - 2020-03-14
 
-* Changed return value from `List<int>` to `Uint8List`.
+-   Fix wrong length when writing ext8 (0xc7)
 
 ## [0.0.6] - 2019-09-20
 
-* Accept any iterable when serializing, not just List
-* Accept ByteData when serializing (will be deserialized as Uint8List)
+-   Accept any iterable when serializing, not just List
+-   Accept ByteData when serializing (will be deserialized as Uint8List)
+
+## [0.0.5] - 2019-05-19
+
+-   Changed return value from `List<int>` to `Uint8List`.
