@@ -192,7 +192,7 @@ class Serializer {
         _writer.writeUint8(0xd8);
       } else if (length <= 0xFF) {
         _writer.writeUint8(0xc7);
-        _writer.writeUint16(length);
+        _writer.writeUint8(length);
       } else if (length <= 0xFFFF) {
         _writer.writeUint8(0xc8);
         _writer.writeUint16(length);
