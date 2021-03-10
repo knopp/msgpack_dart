@@ -1,8 +1,7 @@
 import "dart:convert";
-
-import "package:msgpack2/msgpack2.dart";
-import "package:msgpack_dart/msgpack_dart.dart" as m2;
 import "dart:io";
+
+import "package:msgpack_dart/msgpack_dart.dart" as m2;
 
 const int TIMES = 10000;
 
@@ -32,11 +31,8 @@ main(List<String> args) async {
   print("Warming Up...");
   for (var i = 0; i < TIMES; i++) {
     var jsonStr = json.encode({"hello": "world"});
-    var newPacked = serialize({"hello": "world"});
 
     json.encode(json.decode(jsonStr));
-    serialize(deserialize(newPacked));
-    m2.serialize(m2.deserialize(newPacked));
   }
 
   if (args.contains("--savings")) {
@@ -46,14 +42,8 @@ main(List<String> args) async {
     }
 
     var jsonBytes = utf8.encode(json.encode(numbers)).length;
-    var msgpackBytes = serialize(numbers).length;
     var msgpack2Bytes = m2.serialize(numbers).length;
-    assert(msgpack2Bytes == msgpackBytes);
-    var fract = new Fraction(jsonBytes, msgpackBytes);
-    fract = fract.reduce();
-    print("MsgPack: ${msgpackBytes} bytes");
     print("JSON: ${jsonBytes} bytes");
-    print("Ratio: ${fract.toRatioString()}");
     exit(0);
   }
 
@@ -160,7 +150,6 @@ testObjectDecode(String desc, input, bool markdown) {
     print("${desc}:");
   }
   var packedJson = json.encode(input);
-  var newPacked = serialize(input);
 
   var watch = new Stopwatch();
   var watchTotal = new Stopwatch();
@@ -197,7 +186,6 @@ testObjectDecode(String desc, input, bool markdown) {
   for (var i = 1; i <= TIMES; i++) {
     watch.reset();
     watch.start();
-    deserialize(newPacked);
     watch.stop();
     times.add(watch.elapsedMicroseconds);
   }
@@ -225,7 +213,6 @@ testObjectDecode(String desc, input, bool markdown) {
   for (var i = 1; i <= TIMES; i++) {
     watch.reset();
     watch.start();
-    m2.deserialize(newPacked);
     watch.stop();
     times.add(watch.elapsedMicroseconds);
   }
@@ -322,13 +309,11 @@ testObjectEncode(String desc, input, bool markdown) {
   var jSize = size;
 
   watch.reset();
-  size = serialize(input).length;
   times.clear();
   watchTotal.reset();
   for (var i = 1; i <= TIMES; i++) {
     watch.reset();
     watch.start();
-    serialize(input);
     watch.stop();
     times.add(watch.elapsedMicroseconds);
   }
