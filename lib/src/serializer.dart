@@ -17,9 +17,13 @@ class Float {
 }
 
 class Serializer {
+  final _codec = Utf8Codec();
+  final DataWriter _writer;
+  final ExtEncoder? _extEncoder;
+
   Serializer({
-    DataWriter dataWriter,
-    ExtEncoder extEncoder,
+    DataWriter? dataWriter,
+    ExtEncoder? extEncoder,
   })  : _writer = dataWriter ?? DataWriter(),
         _extEncoder = extEncoder;
 
@@ -171,13 +175,14 @@ class Serializer {
   }
 
   bool _writeExt(dynamic object) {
-    int type = _extEncoder.extTypeForObject(object);
+    int? type = _extEncoder?.extTypeForObject(object);
     if (type != null) {
       if (type < 0) {
         throw FormatError("Negative ext type is reserved");
       }
-      final encoded = _extEncoder.encodeObject(object);
-      assert(encoded != null);
+      final encoded = _extEncoder?.encodeObject(object);
+      if (encoded == null)
+        throw FormatError('Unable to encode object. No Encoder specified.');
 
       final length = encoded.length;
       if (length == 1) {
@@ -208,8 +213,4 @@ class Serializer {
     }
     return false;
   }
-
-  final _codec = Utf8Codec();
-  final DataWriter _writer;
-  final ExtEncoder _extEncoder;
 }

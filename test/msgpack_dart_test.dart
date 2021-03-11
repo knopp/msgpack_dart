@@ -1,6 +1,7 @@
 import 'dart:typed_data';
-import 'package:test/test.dart';
+
 import "package:msgpack_dart/msgpack_dart.dart";
+import 'package:test/test.dart';
 
 //
 // Tests taken from msgpack2 (https://github.com/butlermatt/msgpack2)
@@ -90,7 +91,7 @@ void main() {
 }
 
 void largeArray() {
-  final list = List<String>();
+  final list = <String>[];
   for (int i = 0; i < 16; ++i) {
     list.add("Item $i");
   }
@@ -101,7 +102,7 @@ void largeArray() {
 }
 
 void veryLargeArray() {
-  final list = List<String>();
+  final list = <String>[];
   for (int i = 0; i < 65536; ++i) {
     list.add("Item $i");
   }
@@ -502,10 +503,10 @@ void unpackIntToStringMap() {
 
 void unpackSmallDateTime() {
   var data = <int>[0xd7, 0xff, 0, 0, 0, 0, 0, 0, 0, 0];
-  var value = deserialize(data);
+  var value = deserialize(Uint8List.fromList(data));
   expect(value, equals(DateTime.fromMillisecondsSinceEpoch(0)));
   data = <int>[0xd7, 0xff, 47, 175, 8, 0, 91, 124, 180, 16];
-  value = deserialize(data);
+  value = deserialize(Uint8List.fromList(data));
   expect((value as DateTime).toUtc(),
       equals(DateTime.utc(2018, 8, 22, 0, 56, 56, 200)));
 }
@@ -529,7 +530,7 @@ void unpackPastDate() {
     158
   ];
 
-  var value = deserialize(data) as DateTime;
+  var value = deserialize(Uint8List.fromList(data)) as DateTime;
   expect(value.toUtc(), equals(DateTime.utc(1932, 2, 24, 1, 53, 45, 500)));
 
   data = <int>[
@@ -549,6 +550,6 @@ void unpackPastDate() {
     248,
     248
   ];
-  value = deserialize(data);
+  value = deserialize(Uint8List.fromList(data));
   expect(value.toUtc(), equals(DateTime.utc(1969, 12, 31, 23, 30)));
 }

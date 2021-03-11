@@ -5,9 +5,15 @@ abstract class ExtDecoder {
 }
 
 class Deserializer {
+  final ExtDecoder? _extDecoder;
+  final codec = Utf8Codec();
+  final Uint8List _list;
+  final ByteData _data;
+  int _offset = 0;
+
   Deserializer(
     Uint8List list, {
-    ExtDecoder extDecoder,
+    ExtDecoder? extDecoder,
     this.copyBinaryData = false,
   })  : _list = list,
         _data = ByteData.view(list.buffer, list.offsetInBytes),
@@ -177,7 +183,7 @@ class Deserializer {
   }
 
   List _readArray(int length) {
-    final res = List(length);
+    final res = List<dynamic>.filled(length, null, growable: false);
     for (int i = 0; i < length; ++i) {
       res[i] = decode();
     }
@@ -198,10 +204,4 @@ class Deserializer {
     final data = _readBuffer(length);
     return _extDecoder?.decodeObject(extType, data);
   }
-
-  final ExtDecoder _extDecoder;
-  final codec = Utf8Codec();
-  final Uint8List _list;
-  final ByteData _data;
-  int _offset = 0;
 }
