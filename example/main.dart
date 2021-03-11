@@ -42,7 +42,6 @@ main(List<String> args) async {
     }
 
     var jsonBytes = utf8.encode(json.encode(numbers)).length;
-    var msgpack2Bytes = m2.serialize(numbers).length;
     print("JSON: ${jsonBytes} bytes");
     exit(0);
   }
