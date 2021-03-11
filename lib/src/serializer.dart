@@ -36,9 +36,11 @@ class Serializer {
     if (d is String) return _writeString(d);
     if (d is Uint8List) return _writeBinary(d);
     if (d is Iterable) return _writeIterable(d);
-    if (d is ByteData)
+    if (d is ByteData) {
       return _writeBinary(
           d.buffer.asUint8List(d.offsetInBytes, d.lengthInBytes));
+    }
+
     if (d is Map) return _writeMap(d);
     if (_extEncoder != null && _writeExt(d)) {
       return;
@@ -181,8 +183,9 @@ class Serializer {
         throw FormatError("Negative ext type is reserved");
       }
       final encoded = _extEncoder?.encodeObject(object);
-      if (encoded == null)
+      if (encoded == null) {
         throw FormatError('Unable to encode object. No Encoder specified.');
+      }
 
       final length = encoded.length;
       if (length == 1) {
