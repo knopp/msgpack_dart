@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb97bcbf-c398-459b-8c44-65fd85ba2a0d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/benchmark.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/benchmark.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/msgpack_dart.iml" beforeDir="false" afterPath="$PROJECT_DIR$/msgpack_dart.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/msgpack_dart.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/msgpack_dart.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/data_writer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/data_writer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/deserializer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/deserializer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/serializer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/serializer.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/msgpack_dart_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/msgpack_dart_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +28,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
+  <component name="RunManager">
+    <configuration name="msgpark_dart_test" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <option name="filePath" value="$PROJECT_DIR$/test/msgpack_dart_test.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -39,5 +46,35 @@
       <updated>1615411834638</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="424" y="156" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1615453132934">
+      <screen x="0" y="23" width="1920" height="943" />
+    </state>
+    <state x="424" y="156" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.203.1440.877/-1920.23.1920.1057/0.23.1920.943@0.23.1920.943" timestamp="1615453132934" />
+    <state x="697" y="291" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1615453125715">
+      <screen x="0" y="23" width="1920" height="943" />
+    </state>
+    <state x="697" y="291" key="#com.intellij.ide.util.TreeFileChooserDialog/1920.203.1440.877/-1920.23.1920.1057/0.23.1920.943@0.23.1920.943" timestamp="1615453125715" />
+    <state width="1878" height="252" key="GridCell.Tab.0.bottom" timestamp="1615453528166">
+      <screen x="0" y="23" width="1920" height="943" />
+    </state>
+    <state width="1878" height="252" key="GridCell.Tab.0.bottom/1920.203.1440.877/-1920.23.1920.1057/0.23.1920.943@0.23.1920.943" timestamp="1615453528166" />
+    <state width="1878" height="252" key="GridCell.Tab.0.center" timestamp="1615453528166">
+      <screen x="0" y="23" width="1920" height="943" />
+    </state>
+    <state width="1878" height="252" key="GridCell.Tab.0.center/1920.203.1440.877/-1920.23.1920.1057/0.23.1920.943@0.23.1920.943" timestamp="1615453528166" />
+    <state width="1878" height="252" key="GridCell.Tab.0.left" timestamp="1615453528165">
+      <screen x="0" y="23" width="1920" height="943" />
+    </state>
+    <state width="1878" height="252" key="GridCell.Tab.0.left/1920.203.1440.877/-1920.23.1920.1057/0.23.1920.943@0.23.1920.943" timestamp="1615453528165" />
+    <state width="1878" height="252" key="GridCell.Tab.0.right" timestamp="1615453528166">
+      <screen x="0" y="23" width="1920" height="943" />
+    </state>
+    <state width="1878" height="252" key="GridCell.Tab.0.right/1920.203.1440.877/-1920.23.1920.1057/0.23.1920.943@0.23.1920.943" timestamp="1615453528166" />
+    <state x="652" y="249" width="615" height="490" key="find.popup" timestamp="1615453228636">
+      <screen x="0" y="23" width="1920" height="943" />
+    </state>
+    <state x="652" y="249" width="615" height="490" key="find.popup/1920.203.1440.877/-1920.23.1920.1057/0.23.1920.943@0.23.1920.943" timestamp="1615453228636" />
   </component>
 </project>
