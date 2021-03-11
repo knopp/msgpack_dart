@@ -1,3 +1,7 @@
+## [1.0.0] - 2021-03-11
+
+-   Migrated to null safety (thanks RootSoft)
+
 ## [0.0.7] - 2020-03-14
 
 -   Fix wrong length when writing ext8 (0xc7)
