@@ -1,3 +1,7 @@
+## [1.0.1] - 2023-01-12
+
+-   Remove dependency on dart:io
+
 ## [1.0.0] - 2021-03-11
 
 -   Migrated to null safety (thanks RootSoft)
